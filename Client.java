@@ -32,7 +32,7 @@ public class Client {
     }
 
     private static void calculates(String opName, float p1, float p2){
-        ClientProxy calculator = new ClientProxy();
+        ICalculator calculator = new ClientProxy();
         opName = opName.toLowerCase();
         if (opName.equals("sub")){
             calculator.sub(p1, p2);
@@ -40,8 +40,10 @@ public class Client {
             calculator.sum(p1, p2);
         } else if (opName.equals("mul")){
             calculator.mul(p1, p2);
-        } else {
+        } else if (opName.equals("div")){
             calculator.div(p1, p2);
+        } else {
+            System.out.println("Operacao nao encontrada!");
         }
     }
 

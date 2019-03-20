@@ -7,7 +7,7 @@ public class ServerRequestHandler {
         handler();
     }
 
-    static void handler() throws IOException, ClassNotFoundException {
+    private static void handler() throws IOException, ClassNotFoundException {
         ServerSocket welcomeSocket = new ServerSocket(1313);
 
         while(true) {
@@ -17,7 +17,7 @@ public class ServerRequestHandler {
             ObjectInputStream inFromClient = new ObjectInputStream(connectionSocket.getInputStream());
 
             String rcv = (String) inFromClient.readObject();
-            String result = new Invoker().readRequest(rcv).toString();
+            String result = new Invoker().processRequest(rcv);
             outToClient.writeObject(result);
             outToClient.flush();
         }

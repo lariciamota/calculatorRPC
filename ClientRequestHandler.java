@@ -9,7 +9,7 @@ public class ClientRequestHandler {
 
         outToServer.writeObject(object);
         outToServer.flush();
-        String result = (String) in.readObject();
+        float result = new Marshaller().unmarshall(in.readObject().toString()).result;
         System.out.println(">>> " + result);
     }
 }
